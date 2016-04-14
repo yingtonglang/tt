@@ -1,33 +1,38 @@
+<html>
+  <head>
+    <title>mid B</title>
+  </head>
+
+  <body>
+    <form action="" method="post">
+      <center><table border="1" width="500" height="500" bgcolor="FFFFCC">
+        <tr><td><center>1</center></td><td><center>2</center></td><td><center>3</center></td><td><center>+</center></td></tr>
+        <tr><td><center>4</center></td><td><center>5</center></td><td><center>6</center></td><td><center>-</center></td></tr>
+        <tr><td><center>7</center></td><td><center>8</center></td><td><center>9</center></td><td><center>*</center></td></tr>
+        <tr><td><center></center></td><td><center>0</center></td><td><center>3</center></td><td><center>/</center></td></tr>
+
+      </table></center>
+    </form>
+  </body>
+</html>>
+
+
+
+
+
 <?php
-  ob_start();
-  session_start();
-  include("profile.php");
+  function add($x,$y){
+    $add=$x+$y;
+    $minus=$x-$y;
+    $mul=$x*$y;
+    $divi=$x/$y;
+    $ind=$x^$y;
 
-  if(isset($_POST["id"])){
-    $id=$_POST["id"];
-    $pwd=$_POST["pwd"];
-    $email=$_POST["email"];
-    $phone=$_POST["phone"];
-
-    $sql="SELECT * FROM member WHERE id='$id' AND pwd='$pwd'";
-    $result=mysqli_query($link, $sql);
-    $rows=mysqli_num_rows($result);
-  
-    if($rows){
-      echo "Success";
-      $_SESSION["check"]="yes";
-      $_SESSION["id"]=$id;
-      $_SESSION["pwd"]=$pwd;
-      $cookietime=new DateTime("now");
-      $cookietime=$cookietime->modify('+1 week');
-      setcookie("member","Cookie測試",$cookietime); 
-      header('refresh:3; url="profile.php"');
-      echo "".$id."歡迎回來，您上一次登入的時間為".$logtime."，您的登入次數為".$count."";
-    }
-    else{
-      echo "Failed, Will back to login page after 3 second";
-      header('refresh:3; url="index.html"');
-    }
-
+    
   }
+
+  
+
+
+
 ?>
